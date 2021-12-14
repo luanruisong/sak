@@ -1,6 +1,8 @@
 package mathx
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func conv2float64(i interface{}) (ret float64, err error) {
 	switch i.(type) {
@@ -26,6 +28,13 @@ func SumFloat(p ...interface{}) (ret float64, err error) {
 }
 
 func MaxFloat(p ...interface{}) (ret float64, err error) {
+	if len(p) == 0 {
+		return 0, nil
+	}
+	if ret, err = conv2float64(p[0]); err != nil {
+		ret = 0
+		return
+	}
 	for _, v := range p {
 		var curr float64
 		if curr, err = conv2float64(v); err != nil {
@@ -40,6 +49,13 @@ func MaxFloat(p ...interface{}) (ret float64, err error) {
 }
 
 func MinFloat(p ...interface{}) (ret float64, err error) {
+	if len(p) == 0 {
+		return 0, nil
+	}
+	if ret, err = conv2float64(p[0]); err != nil {
+		ret = 0
+		return
+	}
 	for _, v := range p {
 		var curr float64
 		if curr, err = conv2float64(v); err != nil {

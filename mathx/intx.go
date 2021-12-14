@@ -1,6 +1,8 @@
 package mathx
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func conv2int64(i interface{}) (ret int64, err error) {
 	switch i.(type) {
@@ -42,6 +44,13 @@ func SumInt(p ...interface{}) (ret int64, err error) {
 }
 
 func MaxInt(p ...interface{}) (ret int64, err error) {
+	if len(p) == 0 {
+		return 0, nil
+	}
+	if ret, err = conv2int64(p[0]); err != nil {
+		ret = 0
+		return
+	}
 	for _, v := range p {
 		var curr int64
 		if curr, err = conv2int64(v); err != nil {
@@ -56,6 +65,13 @@ func MaxInt(p ...interface{}) (ret int64, err error) {
 }
 
 func MinInt(p ...interface{}) (ret int64, err error) {
+	if len(p) == 0 {
+		return 0, nil
+	}
+	if ret, err = conv2int64(p[0]); err != nil {
+		ret = 0
+		return
+	}
 	for _, v := range p {
 		var curr int64
 		if curr, err = conv2int64(v); err != nil {

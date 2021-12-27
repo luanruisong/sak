@@ -73,3 +73,7 @@ func (c Curl) GetWithTimout(uri string, params map[string]string, timeout time.D
 	}
 	return resultByte, nil
 }
+
+func New(Domain string) *Curl {
+	return &Curl{Domain: Domain}
+}

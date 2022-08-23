@@ -22,3 +22,11 @@ func (t Time) Fmt() string {
 func Now() Time {
 	return Time(time.Now())
 }
+
+func ForTs10(ts int64) Time {
+	return Time(time.Unix(ts, 0))
+}
+
+func ForTs13(ts int64) Time {
+	return ForTs10(ts / 1000)
+}
